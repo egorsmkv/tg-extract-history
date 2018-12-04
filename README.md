@@ -1,34 +1,45 @@
-С помощью этого проекта вы можете скачать все сообщения из группы в Telegram и сохранить их в CSV-файл.
+With this project you can download all messages from a Telegram's group and save them into a CSV file.
 
-#### Установка
+#### Installing
 
-Перед выполнением команд нужно установить **pipenv** (например так: `pip3 install pipenv`). 
-С его помощью создаётся виртуальное окружение для Python и загружаются необходимые библиотеки.
+Before running commands you must install **pipenv** (for example, like this: `pip3 install pipenv`).
+pipenv will create a Python's virtual environment and downloaded all dependencies.
 
-```
+```shell
 git clone https://github.com/egorsmkv/tg-extract-history
 cd tg-extract-history
 pipenv install
-```
-
-#### Настройка
-
-В файле `config.py` содержатся настройки.
-
-1. `API_ID` и `API_HASH`: их нужно получить на странице https://my.telegram.org/
-2. `GROUP_URL`: ссылка на группу из которой будут скачиваться сообщения
-
-#### Запуск
-
-После настройки в файле `config.py` можно запустить проект. 
-Данные будут сохраняться в файле `data/history.csv`.
-
-```
 pipenv shell
-python extractor.py
 ```
 
-После запуска скрипта вы будете видеть лог работы. 
+#### Obtain API_ID and API_HASH credentials
 
-**Обратите внимание**, что при первом запуске от вас потребуется ввести свой номер телефона с
-помощью которого вы создавали аккаунт в Telegram и полученный код, он придёт в приложении Telegram.
+You can obtain them at this website - https://my.telegram.org/
+
+#### Usage
+
+> **Note**: at the first run, you must enter a phone number and code that will be send to the Telegram application.
+
+Available parameters of the CLI:
+
+```shell
+$ python extractor.py --help
+
+Usage: extractor.py [OPTIONS]
+
+Options:
+  --debug BOOLEAN        Enable logging
+  --filename TEXT        Filename where the extractor writes the group log
+  --group TEXT           Group for extraction  [required]
+  --offset-id INTEGER    Offset message ID
+  --save-offset BOOLEAN  Enable saving offset value into a file
+  --api-id TEXT          [required]
+  --api-hash TEXT        [required]
+  --help                 Show this message and exit.
+```
+
+Download all messages from the group about Python:
+
+```shell
+$ python extractor.py --api-id 00001 --api-hash xxxxyyyzzz --group Python --filename python_group.csv
+```
