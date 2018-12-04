@@ -28,14 +28,17 @@ $ python extractor.py --help
 Usage: extractor.py [OPTIONS]
 
 Options:
-  --debug BOOLEAN        Enable logging
-  --filename TEXT        Filename where the extractor writes the group log
-  --group TEXT           Group for extraction  [required]
-  --offset-id INTEGER    Offset message ID
-  --save-offset BOOLEAN  Enable saving offset value into a file
-  --api-id TEXT          [required]
-  --api-hash TEXT        [required]
-  --help                 Show this message and exit.
+  --debug BOOLEAN              Enable logging
+  --filename TEXT              Filename where the extractor writes the group
+                               log
+  --group TEXT                 Group for extraction  [required]
+  --offset-id INTEGER          Offset message ID
+  --save-offset BOOLEAN        Enable saving offset value into a file
+  --reset-downloading BOOLEAN  It takes an offset value from the file and
+                               append new messages into specified file.
+  --api-id TEXT                [required]
+  --api-hash TEXT              [required]
+  --help                       Show this message and exit.
 ```
 
 Download all messages from the group about Python:
